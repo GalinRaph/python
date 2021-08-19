@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        'use strict'
+        let arg1 = +prompt('Введите значение переменной а');
+        let arg2 = +prompt('Введите значение переменной b');
+        let operation = prompt('Введите название операции (сумма, разность, деление, умножение):');
+        let z = 0
+        function addition(a, b) {
+            return a + b;
+        }
+        function subtraction(a, b) {
+            return a - b;
+        }
+        function division(a, b) {
+            return a / b;
+        }
+        function multiplication(a, b) {
+            return a * b;
+        }
+        switch(operation) {
+            case 'сумма':
+                alert('Сумма чисел равна: ' + (z = addition(arg1,arg2)));
+                break;
+            case 'разность':
+                alert('Разность чисел равна: ' + (z = subtraction(arg1,arg2)));
+                break;
+            case 'деление':
+                alert('Деление чисел равна: ' + (z = division(arg1,arg2)));
+                break;
+            case 'умножение':
+                alert('Умножение чисел равна: ' + (z = multiplication(arg1,arg2)));
+                break;
+                
+        }
+    </script>
+</body>
+</html>
