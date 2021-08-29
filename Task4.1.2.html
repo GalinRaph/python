@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        'use strict'
+        function Post(author, text, date){
+            this.author = author;
+            this.text = text;
+            this.date = date;
+        }
+        Post.prototype.edit = function(){
+            this.text = prompt('Введите текст')
+            alert('<<' + this.text + '>> ' + '\n' + this.author + ' "Капитанская дочка," ' + this.date + ' год')
+        }
+        let obj1 = new Post('Пушкин А.С.', NaN, 1836);
+        obj1.edit();
+
+        function AttachedPost(author, text, date){
+            Post.call(this, author, text, date);
+            this.highlighted = false;
+        }        
+
+        AttachedPost.prototype = Object.create(Post.prototype);
+        AttachedPost.prototype.constructor = AttachedPost;
+
+        AttachedPost.prototype.makeTextHighlighted = function(){
+            this.highlighted = true;
+            alert('Текст выделен. Переменной highlighted присвоено значение: ' + this.highlighted)
+        }
+
+        let bObj = new AttachedPost('А.С. Пушкин', 'Тут какой-то текст', '1836');
+        bObj.makeTextHighlighted();
+
+        /*es6 */
+        class PostTwo{
+            constructor(author, text, date){
+                this.author = author;
+                this.text = text;
+                this.date = date;
+            }
+            editTwo(){
+                this.text = prompt('Введите текст')
+                alert('<<' + this.text + '>> ' + '\n' + this.author + ' "К Чаадаеву," ' + this.date + ' год')
+            }
+        }
+
+        class AttachedPostTwo extends PostTwo{
+            constructor(author, text, date){
+                super(author, text, date);                
+                this.highlighted = false;
+
+            }
+            makeTextHighlightedTwo(){
+                this.highlighted = true;                
+                alert('Текст снова выделен. Переменной highlighted присвоено значение: ' + this.highlighted)            
+            }
+        }
+        let bObjTwo = new AttachedPostTwo('С. Есенин', 'Тут какой-то текст', '1836');
+        bObjTwo.makeTextHighlightedTwo();
+        bObjTwo.editTwo();
+
+
+    </script>
+</body>
+</html>
